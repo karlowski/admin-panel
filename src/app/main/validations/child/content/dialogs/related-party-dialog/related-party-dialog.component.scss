@@ -1,0 +1,94 @@
+@import "variables";
+
+.mat-dialog-header {
+  padding: 20px 45px 20px 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1.35rem;
+  color: $gray-granite-dark;
+}
+.close {
+  color: $gray-lavender-dark;
+  cursor: pointer;
+}
+.mat-dialog-content {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 20px 15px;
+  border-bottom: 1px solid $silver;
+  border-top: 1px solid $silver;
+  max-height: 400px;
+}
+.mat-dialog-actions {
+  margin: 7px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.item {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $black;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $black;
+}
+
+.left-half{
+  display: inline-block!important;
+  width: 49%;
+  margin-right: 1%;
+}
+
+.right-half{
+  display: inline-block!important;
+  width: 49%;
+  margin-left: 1%;
+}
+
+.confirm {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  height: 50px;
+  background-color: $surf;
+  text-transform: uppercase;
+  border-radius: 50px;
+  color: $white;
+}
+.cancel {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  width: 120px;
+  height: 50px;
+  border: 2px solid $gray-granite-dark;
+  text-transform: uppercase;
+  border-radius: 50px;
+  color: $gray-granite-dark;
+}
+
+.mat-form-field{
+  font-size:15px;
+  display: block;
+}
+
+.radio-group {
+  display: inline-block;
+  width: 49%;
+  text-transform: uppercase;
+  vertical-align: top;
+  mat-radio-button {
+    display: block;
+    width: 50%;
+    margin-top: 5px;
+  }
+}

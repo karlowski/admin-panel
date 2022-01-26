@@ -1,0 +1,12 @@
+<div class="workflows-header-container">
+  <app-stat-block 
+    [stats]="states.list" 
+    [statBlockName]="'Workflow state'"
+    [isLast]="false">
+  </app-stat-block>
+  <app-stat-block 
+    [stats]="statuses.list" 
+    [statBlockName]="'Workflow status'"
+    [isLast]="true">
+  </app-stat-block>
+</div>

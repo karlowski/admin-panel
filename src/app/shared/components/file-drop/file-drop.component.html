@@ -1,0 +1,29 @@
+<mat-form-field appDnd
+  appearance="outline" 
+  class="container" 
+  *ngIf="form.controls.file.value == null" 
+  (fileDropped)="onFileDropped($event)">
+  <input 
+    matInput 
+    type="file" 
+    #fileDropRef 
+    id="fileDropRef"
+  (change)="fileBrowseHandler($event.target.files)" />
+  <div class="upload-text" for="fileDropRef"> Drag and drop or click here to upload</div>
+</mat-form-field>
+<div class="added-file"  *ngIf="form.controls.file.value != null">
+		<div class="file-icon">
+      <mat-icon class="validations-child-header__back-button">upload</mat-icon>
+		</div>
+		<div class="info">
+			<h4 class="name">
+				{{ form.controls.file.value[0]?.name }}
+			</h4>
+			<p class="size">
+				{{ formatBytes() }}
+			</p>
+		</div>
+		<div class="delete" (click)="deleteFile()">
+      <mat-icon class="validations-child-header__back-button">delete</mat-icon>			
+		</div>
+</div>

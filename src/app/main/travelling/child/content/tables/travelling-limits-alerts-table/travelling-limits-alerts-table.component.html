@@ -1,0 +1,176 @@
+<section class="travelling-child-table-container">
+  <div class="table-header">
+    <div class="table-header__filter-container">
+      <div class="table-header__wrapper">
+        <div class="table-header__title">Limits</div>
+        <app-add-button *ngIf="paymentSourcesToLimit?.length > 0" class="add-button-travelling" (click)="addNewLimit()"></app-add-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-table" *ngIf="limitsData">
+    <table mat-table [dataSource]="limitsData" class="workflows-table">
+      <ng-container matColumnDef="dateCreated">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-date-created-column">
+          <div class="title">Date created</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.createdAt | date:'dd/MM/yyyy hh:mm'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-name-column">
+          <div class="title">Name</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.name}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paymentSource">
+        <th mat-header-cell *matHeaderCellDef class="travelling-payment-source-column">
+          <div class="title">Payment Source</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.paymentSourceName}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef class="travelling-currency-column">
+          <div class="title">Currency</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.currency}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="limitAmount">
+        <th mat-header-cell *matHeaderCellDef class="travelling-limit-amount">
+          <div class="title">Limit Amount</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.amount | number: '.0-3'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentTravelling">
+        <th mat-header-cell *matHeaderCellDef class="travelling-current">
+          <div class="title">Current travelling</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.currentTravelling | number: '.0-3'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buttons-group">
+        <th mat-header-cell *matHeaderCellDef class="travelling-buttons-group">
+          <div class="title"></div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="buttons-group">
+            <mat-icon class="material-icons edit" (click)="editLimit(element)">edit</mat-icon>
+            <mat-icon class="material-icons" (click)="removeLimit(element)">close</mat-icon>
+          </div>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="limitsColumnHeaders"></tr>
+      <tr mat-row *matRowDef="let row; columns: limitsColumnHeaders;"></tr>
+    </table>
+  </div>
+
+  <div class="table-header">
+    <div class="table-header__filter-container">
+      <div class="table-header__wrapper">
+        <div class="table-header__title">Alerts</div>
+        <app-add-button *ngIf="paymentSourcesToAlert?.length > 0" class="add-button-travelling" (click)="updateAlert()"></app-add-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-table" *ngIf="alertsData">
+    <table mat-table [dataSource]="alertsData" class="workflows-table">
+      <ng-container matColumnDef="dateCreated">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-date-created-column">
+          <div class="title">Date created</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.createdAt | date:'dd/MM/yyyy hh:mm'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-name-column">
+          <div class="title">Name</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.name}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paymentSource">
+        <th mat-header-cell *matHeaderCellDef class="travelling-payment-source-column">
+          <div class="title">Payment Source</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.paymentSourceName}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="recipient">
+        <th mat-header-cell *matHeaderCellDef class="travelling-recipient">
+          <div class="title">Recipient</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.recipient}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef class="travelling-currency-column">
+          <div class="title">Currency</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.currency}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="balanceAlert">
+        <th mat-header-cell *matHeaderCellDef class="travelling-alert">
+          <div class="title">Alert when balance</div>
+          <div class="title">is equal or below</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.amount | number: '.0-3'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentBalance">
+        <th mat-header-cell *matHeaderCellDef class="travelling-current">
+          <div class="title">Current balance</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.balance | number: '.0-3'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buttons-group">
+        <th mat-header-cell *matHeaderCellDef class="travelling-buttons-group">
+          <div class="title"></div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="buttons-group">
+                <mat-icon class="material-icons edit" (click)="editAlert(element)">edit</mat-icon>
+                <mat-icon class="material-icons" (click)="removeAlert(element)">close</mat-icon>
+            </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="alertsColumnHeaders"></tr>
+      <tr mat-row *matRowDef="let row; columns: alertsColumnHeaders;" class="table-bottom-radius"></tr>
+    </table>
+  </div>
+</section>

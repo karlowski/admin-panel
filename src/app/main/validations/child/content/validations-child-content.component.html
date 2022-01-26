@@ -1,0 +1,89 @@
+<mat-tab-group mat-align-tabs="left" class="section-outer-tabs">
+  <mat-tab class="tab-header outer-tab-header">
+    <ng-template mat-tab-label>
+      <span>Raw Data</span>
+    </ng-template>
+    <section class="validations-raw-data-container">
+      <mat-tab-group mat-align-tabs="left" class="section-tabs section-inner-tabs">
+        <mat-tab *ngFor="let rawField of rawData | keyvalue"  class="section-tab-header">
+            <ng-template mat-tab-label>
+              <span
+                [matBadge]="rawField.value?.length"
+                matBadgeOverlap="false"
+                class="rawBadge">{{toCapitalizedWords(rawField.key)}}</span>
+            </ng-template>
+            <container-element [ngSwitch]="rawField.key">
+              <app-validations-field-table
+                *ngSwitchDefault
+                [labelingId]="labeling?._iBrumaId"
+                [fieldName]="rawField.key"
+                (updateField)="updateField($event, '/raw/data/'+rawField.key)"
+                [tableData]="rawField.value">
+              </app-validations-field-table>
+              <app-validations-catalog-table
+                *ngSwitchCase="'documentCatalog'"
+                [tableData]="rawField.value">
+              </app-validations-catalog-table>
+              <app-validations-raw-related-party-table
+                *ngSwitchCase="'relatedParty'"
+                [labelingId]="labeling?._iBrumaId"
+                [fieldName]="rawField.key"
+                (updateField)="updateField($event, '/raw/data/'+rawField.key)"
+                [tableData]="rawField.value">
+              </app-validations-raw-related-party-table>
+              <app-validations-document-table
+                *ngSwitchCase="'filing'"
+                [labelingId]="labeling?._iBrumaId"
+                (updateField)="updateField($event, '/raw/data/filing')"
+                [fieldName]="rawField.key"
+                [tableData]="rawField.value">
+              </app-validations-document-table>
+            </container-element>
+          </mat-tab>
+      </mat-tab-group>
+    </section>
+  </mat-tab>
+
+  <mat-tab class="tab-header outer-tab-header">
+    <ng-template mat-tab-label>
+      <span>Mapped Data</span>
+    </ng-template>
+    <section class="validations-raw-data-container">
+      <mat-tab-group mat-align-tabs="left" class="section-tabs section-inner-tabs">
+        <mat-tab *ngFor="let mappedField of mappedData | keyvalue" class="section-tab-header">
+            <ng-template mat-tab-label>
+              <span
+                [matBadge]="getFlagCount(mappedField.key)"
+                matBadgeOverlap="false"
+                class="mappedBadge">{{toCapitalizedWords(mappedField.key)}}</span>
+            </ng-template>
+            <container-element [ngSwitch]="mappedField.key">
+              <app-validations-field-table
+                *ngSwitchDefault
+                [labelingId]="labeling?._iBrumaId"
+                [fieldName]="mappedField.key"
+                (updateField)="updateField($event, '/payload/entity/fields')"
+                [tableData]="mappedField.value">
+              </app-validations-field-table>
+              <app-validations-document-table
+                *ngSwitchCase="'documents'"
+                [labelingId]="labeling?._iBrumaId"
+                [fieldName]="mappedField.key"
+                (updateField)="updateField($event, '/payload/entity/documents')"
+                [tableData]="mappedField.value"
+                [isMapped]="true">
+              </app-validations-document-table>
+              <app-validations-related-party-table
+                *ngSwitchCase="'relatedParties'"
+                [labelingId]="labeling?._iBrumaId"
+                [fieldName]="mappedField.key"
+                (updateField)="updateField($event, '/payload/relatedParties')"
+                [tableData]="mappedField.value"
+                [isMapped]="true">
+              </app-validations-related-party-table>
+            </container-element>
+        </mat-tab>
+      </mat-tab-group>
+    </section>
+  </mat-tab>
+</mat-tab-group>

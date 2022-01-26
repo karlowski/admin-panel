@@ -1,0 +1,22 @@
+<form class="table-paginator" *ngIf="pagination$ | async" [formGroup]="form">
+  <div class="table-paginator__count">
+    <div class="table-paginator__number">{{(pagination$ | async).totalElements}}</div>
+    <div class="table-paginator__name">{{paginatorName}}</div>
+  </div>
+  <div class="table-paginator__pagination">
+    <mat-form-field appearance="outline" class="paginator-form-field">
+      <mat-select formControlName="pageNumber" (selectionChange)="onPageNumberChange($event)">
+        <mat-option *ngFor="let pageNumber of pageNumbers" [value]="pageNumber">{{pageNumber + 1}}</mat-option>
+      </mat-select>    
+    </mat-form-field>
+    <div class="table-paginator__amount">of {{(pagination$ | async).totalPages}}</div>
+  </div>
+  <div class="table-paginator__select">
+    <mat-form-field appearance="outline">
+      <mat-label>{{(pagination$ | async).size}} per page</mat-label>
+      <mat-select formControlName="pageSize" (ngModelChange)="onPageSizeChange($event)">
+        <mat-option *ngFor="let pageSize of availablePageSize" [value]="pageSize">{{pageSize}} per page</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>

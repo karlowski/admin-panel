@@ -1,0 +1,26 @@
+<div class="search-sidenav">
+  <div class="search-sidenav__header">
+    <div class="search-sidenav__title">Search Travelling</div>
+    <mat-icon class="search-sidenav__close" (click)="drawer.close()">close</mat-icon>
+  </div>
+
+  <form class="search-sidenav__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="search-sidenav__option">
+      <div class="search-sidenav__option-name">
+        Dummy
+      </div>
+      <mat-form-field class="search-sidenav__form-field" appearance="outline">
+        <mat-label>select dummy</mat-label>
+        <mat-select placeholder="ALL" formControlName="dummy">
+          <mat-option value="">All</mat-option>
+          <mat-option *ngFor="let dummy of getDummys()" [value]="dummy">{{getDummyName(dummy)}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="search-sidenav__button-group">
+      <mat-icon class="search-sidenav__refresh" (click)="onRefresh()">autorenew</mat-icon>
+      <button type="submit" mat-flat-button class="search-sidenav__submit" color="primary">search</button>
+    </div>
+  </form>
+</div>

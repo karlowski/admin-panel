@@ -1,0 +1,17 @@
+// import custom component themes
+@import "table";
+@import "tabs";
+@import "chip";
+@import "slide-toggle";
+@import "form-field-outline";
+@import "dialog";
+
+// you only have to add additional componenets here (instead of in every theme class)blob:https://team.upwork.com/9997ff3d-25b6-4654-a040-9975e371a4ed
+@mixin custom-components-theme($theme) {
+  @include mat-table-theme($theme);
+  @include mat-tabs-theme($theme);
+  @include mat-chips-theme($theme);
+  @include mat-slide-toggle-theme($theme);
+  @include mat-form-field-outline-theme($theme);
+  @include mat-dialog-theme($theme);
+}

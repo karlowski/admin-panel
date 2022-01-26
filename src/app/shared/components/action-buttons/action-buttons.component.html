@@ -1,0 +1,21 @@
+<app-menu-button class="small" [matMenuTriggerFor]="menu"></app-menu-button>
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item
+    *ngIf = "sendValidation.observers.length"
+    [disabled]="status !== 'INVALID'"
+    (click)="sendValidation.emit()">Send for validation</button>
+  <button mat-menu-item
+    *ngIf = "markAsValidated.observers.length"
+    [disabled]="status !== 'CLERK'"
+    (click)="markAsValidated.emit()">Mark as Validated</button>
+  <button mat-menu-item
+    *ngIf = "markAsComplete.observers.length"
+    [disabled]="status !== 'CLERK'"
+    (click)="markAsComplete.emit()">Mark as complete</button>
+  <button mat-menu-item
+    *ngIf = "refreshExtractedData.observers.length"
+    (click)="refreshExtractedData.emit()">Refresh extracted data</button>
+  <button mat-menu-item
+    *ngIf = "restartWorkflow.observers.length"
+    (click)="restartWorkflow.emit()">Restart workflow</button>
+</mat-menu>

@@ -1,0 +1,29 @@
+image: node:14.3.0
+
+definitions:
+  steps:
+    - step: &install-build
+        name: install-build
+        caches:
+          - node
+        script:
+          - npm install
+          - npm run main
+    - step: &install-build-push
+        name: install-build-push
+        caches:
+          - node
+        script:
+          - npm install
+          - npm run $BITBUCKET_BRANCH
+          - bash push-docker.sh
+        services:
+          - docker
+
+pipelines:
+  pull-requests:
+    '**':
+      - step: *install-build
+  branches:
+    '{dev,qa,main}':
+      - step: *install-build-push

@@ -1,0 +1,35 @@
+<div class="mat-dialog-header">
+  <div class="header-title">{{data.alert? 'Update' : 'Add New'}} alert</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="outline" class="limitName">
+      <mat-label>Payment Source</mat-label>
+      <mat-select placeholder="select payment source" formControlName="paymentSourceType">
+          <mat-option 
+            *ngFor="let paymentSource of data.paymentSources" 
+            [value]="paymentSource.type">{{paymentSource.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+      
+     <mat-form-field appearance="outline" class="alertName">
+      <mat-label>alert name</mat-label>
+      <input placeholder="ENTER ALERT NAME" matInput formControlName="fieldAlertName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="limitName">
+      <mat-label>balance is equal or below</mat-label>
+      <input placeholder="ENTER ALERT AMOUNT" matInput formControlName="fieldAlertAmount">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>recipent</mat-label>
+      <input placeholder="ENTER EMAIL ADDRESS" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" matInput formControlName="fieldAlertEmail">
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>cancel</button>
+  <button class="confirm" mat-button (click)="onSubmit()">{{data.alert? 'update' : 'create'}} alert</button>
+</mat-dialog-actions>

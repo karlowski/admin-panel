@@ -1,0 +1,12 @@
+
+<ng-container [ngSwitch]="state">
+  <mat-icon class="resume" *ngSwitchCase="workflowsState.complete">check_circle_outline</mat-icon>
+  <mat-icon class="profile" *ngSwitchCase="workflowsState.processing">schedule</mat-icon>
+  <mat-icon class="profile" *ngSwitchCase="workflowsState.basic">first_page</mat-icon>
+  <mat-icon class="profile" *ngSwitchCase="workflowsState.relatedParties">mediation</mat-icon>
+  <mat-icon class="profile" *ngSwitchCase="workflowsState.ubo">person</mat-icon>
+  <mat-icon class="profile" *ngSwitchCase="workflowsState.payment">paid</mat-icon>
+  <mat-icon class="profile" *ngSwitchCase="workflowsState.childUBO">child_care</mat-icon>
+  <mat-icon class="warning" *ngSwitchCase="workflowsState.invalid">warning</mat-icon>
+  <mat-icon class="warning" *ngSwitchCase="workflowsState.extended">expand</mat-icon>
+</ng-container>

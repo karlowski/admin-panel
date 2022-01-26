@@ -1,0 +1,10 @@
+<ng-container [ngSwitch]="status">
+  <mat-icon class="resume" *ngSwitchCase="WorkflowsStatus.completed">check_circle_outline</mat-icon>
+  <ng-container *ngSwitchCase="WorkflowsStatus.running">
+    <mat-icon *ngIf="!isRunningPlayIcon" class="paused">schedule</mat-icon>
+    <mat-icon *ngIf="isRunningPlayIcon" class="material-icons-outlined">play_circle_outline</mat-icon>
+  </ng-container>
+  <mat-icon class="profile" *ngSwitchCase="WorkflowsStatus.clerk">person</mat-icon>
+  <mat-icon class="canceled" *ngSwitchCase="WorkflowsStatus.invalid">close</mat-icon>
+  <mat-icon class="warning" *ngSwitchCase="WorkflowsStatus.paused">warning</mat-icon>
+</ng-container>

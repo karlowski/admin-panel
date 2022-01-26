@@ -1,0 +1,55 @@
+@import "variables";
+
+.nonLastBlock{
+  border-right: 1px solid $gray-trolley-dark;
+  margin-right: 10px;
+}
+
+.stat-block {
+  display: flex;
+  margin: 30px auto 0 auto;
+  height: 100px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: $gray-granite-dark;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    line-height: 22px;
+  }
+
+  &__item {
+    margin-right: 18px;
+  }
+
+  &__name {
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: $black;
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: $sapphire;
+    cursor: pointer;
+  }
+
+  &__number {
+    border-radius: 3px;
+    width: 20px;
+    padding: 3px 3px 6px 6px;
+    height: 18px;
+    margin-left: -5px;
+    margin-top: -1px;
+  }
+
+  &__number.active {
+    background-color: $sapphire;
+    color: $white;
+  }
+}

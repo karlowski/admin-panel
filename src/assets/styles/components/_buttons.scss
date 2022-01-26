@@ -1,0 +1,9 @@
+@mixin responsive-buttons($side) {
+  @media (max-width: 1050px) {
+    width: 60px;
+    border-radius: 30px;
+    opacity: 0.5;
+    position: absolute;
+    #{$side}: 20px;
+  }
+}

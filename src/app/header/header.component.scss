@@ -1,0 +1,12 @@
+@import "variables";
+
+.header {
+  height: 55px;
+  width: 100%;
+  background-color: $saffron;
+}
+
+.header.is-fixed {
+  top: 0;
+  z-index: 200;
+}

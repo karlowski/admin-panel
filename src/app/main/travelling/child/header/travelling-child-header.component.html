@@ -1,0 +1,41 @@
+<div class="travelling-wrapper">
+  <div class="travelling-child-header" *ngIf="paymentSources">
+    <div>
+      <div routerLink="/travelling" class="travelling-child-header__back-button-container">
+        <mat-icon class="travelling-child-header__back-button">keyboard_backspace</mat-icon>
+      </div>
+    </div>
+    <div class="travelling-child-header__main">
+      <div class="travelling-child-header__title-container">
+        <div class="travelling-child-header__work-icon-container">
+          <mat-icon class="travelling-child-header__work-icon">work_outline</mat-icon>
+        </div>
+        <div class="travelling-child-header__main-inner">
+          <div class="header">
+            <div class="header__wrapper">
+              <div class="header__title">{{dummyName}}</div>
+              <div class="header__id">
+                <span class="bold">dummy code</span>
+                <span class="country"> {{dummyCode}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+            <div>
+              <div class="bottom__title">travelling in past month</div>
+              <div class="bottom__description">{{ paymentSources.travellingLastMonth | number: '.0-3' }}</div>
+            </div>
+            <div>
+              <div class="bottom__title">last top-up date</div>
+              <div class="bottom__description" *ngIf="paymentSources.lastTopup?.topupDate">{{ paymentSources.lastTopup.topupDate | date: 'dd/MM/yyyy hh:mm' }}</div>
+            </div>
+            <div>
+              <div class="bottom__title">last top-up amount</div>
+              <div class="bottom__description" *ngIf="paymentSources.lastTopup?.amount">{{ paymentSources.lastTopup.amount | number: '.0-3'}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

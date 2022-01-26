@@ -1,0 +1,12 @@
+<div class="mat-dialog-header">
+  <div class="header-title">Remove limit</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-title>
+  <div class="title">are you sure you want to remove:</div>
+  <div class="item">{{data.name}}</div>
+</div>
+<mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>cancel</button>
+  <button class="confirm" mat-button (click)="onRemove()">remove</button>
+</mat-dialog-actions>

@@ -1,0 +1,12 @@
+@import "variables";
+
+.sub-menu {
+  height: 45px;
+  background-color: $white-smoke-light;
+  width: 100%;
+}
+
+.sub-menu.is-fixed {
+  top: 55px;
+  z-index: 100;
+}

@@ -1,0 +1,12 @@
+@import "variables";
+
+@mixin mat-dialog-theme($theme-or-color-config) {
+  .mat-dialog-container {
+    background-color: $white;
+    padding: 0 !important;
+    margin-top: -100px !important;
+    overflow: initial !important;
+    border-radius: 15px !important;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+  }
+}

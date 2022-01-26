@@ -1,0 +1,92 @@
+@import "variables";
+
+@mixin mat-slide-toggle-theme($theme-or-color-config) {
+  .toggle-switch {
+    font-family: "Material Icons";
+
+    .mat-slide-toggle-bar {
+      width: 38px;
+      height: 21px;
+      border-radius: 33px;
+    }
+
+    .mat-slide-toggle-thumb-container {
+      top: 2px;
+      left: 2.5px;
+    }
+
+    .mat-slide-toggle-thumb {
+      background-color: $white;
+      width: 17px;
+      height: 17px;
+    }
+
+    &.mat-checked {
+      .mat-slide-toggle-bar {
+        background-color: $bud;
+      }
+
+      .mat-slide-toggle-bar::before {
+        content: '\e876';
+        color: $white;
+        position: absolute;
+        left: 3px;
+        top: -1px;
+      }
+    }
+
+    &:not(.mat-checked) {
+      .mat-slide-toggle-bar {
+        background-color: $white-smoke-dark;
+      }
+
+      .mat-slide-toggle-bar::after {
+        content: '\e5cd';
+        color: $gray-lavender-dark;
+        position: absolute;
+        left: 21px;
+        top: -1px;
+      }
+    }
+  }
+
+  .toggle-switch.big {
+    .mat-slide-toggle-bar {
+      width: 64px;
+      height: 32px;
+      border-radius: 33px;
+    }
+
+    .mat-slide-toggle-thumb {
+      width: 26px;
+      height: 26px;
+    }
+
+    .mat-slide-toggle-thumb-container {
+      top: 3px;
+      left: 3.5px;
+    }
+
+    &.mat-checked .mat-slide-toggle-thumb-container {
+      transform: translate3d(31px, 0, 0);
+    }
+
+    &.mat-checked {
+      .mat-slide-toggle-bar::before {
+        content: '\e876';
+        font-size: 21px;
+        left: 6px;
+        top: 4px;
+      }
+    }
+
+    &:not(.mat-checked) {
+      .mat-slide-toggle-bar::after {
+        content: '\e5cd';
+        left: 36px;
+        top: 4px;
+        font-size: 21px;
+      }
+    }
+  }
+}

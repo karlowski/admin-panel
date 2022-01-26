@@ -1,0 +1,47 @@
+<div class="arrows-container">
+  <app-left-button
+    *ngIf="selectedTab === 0"
+    class="responsive travelling-arrow"
+    [class.invisible]="!(pagination?.page > 0)"
+    (clickButton)="changePageNumber(pagination.page - 1)">
+  </app-left-button>
+  <mat-tab-group mat-align-tabs="left" class="section-tabs" [class.no-arrows]="selectedTab !== 0" [(selectedIndex)]="selectedTab">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span [matBadge]="pagination?.totalElements > 0 ? pagination.totalElements : null"
+              matBadgeOverlap="false"
+              class="rawBadge">Travelling</span>
+      </ng-template>
+        <app-travelling-table [paymentSourceData]="paymentSourceData" (queryEmitter)="queryTravellings($event)">
+        </app-travelling-table>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span [matBadge]="countPaymentSources()" matBadgeOverlap="false" class="rawBadge">
+          Payment Sources
+        </span>
+      </ng-template>
+      <app-payment-source-table
+        [dummyCode]="dummyCode"
+        [paymentSources]="paymentSourceData?.paymentSources">
+    </app-payment-source-table>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span [matBadge]="countLimitsAlerts()" matBadgeOverlap="false" class="rawBadge">
+          Limits & Alarms
+        </span>
+      </ng-template>
+      <app-travelling-limits-alerts-table
+        [dummyCode]="dummyCode"
+        [travellingData]="paymentSourceData">
+      </app-travelling-limits-alerts-table>
+    </mat-tab>
+  </mat-tab-group>
+  <app-right-button
+    *ngIf="selectedTab === 0"
+    class="responsive travelling-arrow"
+    (clickButton)="changePageNumber(pagination?.page + 1)"
+    [class.invisible]="!(pagination?.totalPages > 0 && pagination?.page !== pagination?.totalPages - 1)">
+  </app-right-button>
+</div>

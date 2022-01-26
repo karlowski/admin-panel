@@ -1,0 +1,86 @@
+@import "variables";
+
+.mat-dialog-header {
+  padding: 20px 45px 20px 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.35rem;
+  color: $gray-granite-dark;
+}
+.form {
+  text-transform: uppercase;
+}
+.close {
+  color: $gray-lavender-dark;
+  cursor: pointer;
+}
+.mat-dialog-content {
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0px 45px;
+  border-bottom: 1px solid $silver;
+  border-top: 1px solid $silver;
+}
+.mat-dialog-actions {
+  margin: 17px 45px;
+  display: flex;
+  justify-content: space-between;
+}
+.item {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $black;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $black;
+}
+.confirm {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  height: 50px;
+  background-color: $surf;
+  text-transform: uppercase;
+  border-radius: 50px;
+  color: $white;
+}
+.cancel {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  width: 120px;
+  height: 50px;
+  border: 2px solid $gray-granite-dark;
+  text-transform: uppercase;
+  border-radius: 50px;
+  color: $gray-granite-dark;
+}
+
+.mat-form-field{
+  display: block;
+}
+
+.double-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-option {
+  padding-top: 10px;
+}
+.horizontal-line {
+  border-color: $silver;
+}
+
+.alertName {
+  padding-top: 10px;
+}

@@ -1,0 +1,105 @@
+<section class="travelling-child-table-container">
+  <div class="table-header">
+    <div class="table-header__filter-container">
+      <div class="table-header__wrapper">
+        <div class="table-header__title">Travelling</div>
+        <form class="table-header__filter-form" [formGroup]="form">
+          <mat-form-field appearance="outline" class="table-header__date-range">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="rangePicker" (click)="rangePicker.open()">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end" (dateChange)="queryTravellings()">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #rangePicker>
+              <mat-date-range-picker-actions>
+                <button mat-button matDateRangePickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+              </mat-date-range-picker-actions>
+            </mat-date-range-picker>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline" class="table-header__payment-source" >
+            <mat-label>Payment Source</mat-label>
+            <mat-select placeholder="select payment method" formControlName="paymentSource" (selectionChange)="queryTravellings()">
+              <mat-option value="">All</mat-option>
+              <ng-container *ngIf="paymentSourceData">
+                <mat-option *ngFor="let paymentSource of paymentSourceData.paymentSources" [value]="paymentSource.paymentSourceId">{{paymentSource.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-table" *ngIf="travellings">
+    <table mat-table [dataSource]="travellings" class="workflows-table">
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-date-time-column">
+          <div class="title">Date / Time</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.createdAt | date:'dd/MM/yyyy hh:mm'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paymentSource">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-card-account-column">
+          <div class="title">Credit card / Account</div>
+          <div class="sub-title">Type</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{getPaymentTypeName(element.paymentSourceType)}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-currency-column">
+          <div class="title">Currency</div>
+        </th>
+        <td class="sub-title" mat-cell *matCellDef="let element">
+          {{element.currency}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-amount-column">
+          <div class="title">Amount</div>
+        </th>
+        <td class="title" mat-cell *matCellDef="let element">{{element.cost  | number: '.0-3'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="workflowFireWorks">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-workflow-column">
+          <div class="title">Workflow / Fire Works</div>
+          <div class="sub-title">Workflow ID</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.workflowName}}</div>
+          <div class="sub-title">{{element.labelingId}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef class="travelling-child-type-column">
+          <div class="title">Type</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title type">{{element.type}}</div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="travellingColumnsHeaders"></tr>
+      <tr mat-row *matRowDef="let row; columns: travellingColumnsHeaders;" class="table-bottom-radius"></tr>
+    </table>
+    <app-table-paginator
+    [pagination$]="pagination$"
+    [paginatorName]="'Travellings'"
+    (pageNumberChange)="changePageNumber($event)"
+    (pageSizeChange)="changePageSize($event)">
+  </app-table-paginator>
+  </div>
+
+</section>

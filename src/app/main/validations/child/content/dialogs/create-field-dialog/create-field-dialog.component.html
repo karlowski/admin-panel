@@ -1,0 +1,31 @@
+<div class="mat-dialog-header">
+  <div class="header-title">Add New {{data.fieldName}} Field</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="fieldName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select placeholder="please select a type" formControlName="fieldType">
+        <mat-option 
+        *ngFor="let fieldType of fieldTypes" 
+        [value]="fieldType">{{fieldType}}</mat-option>
+        <mat-option value="VALUE">value</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Value</mat-label>
+      <input matInput formControlName="fieldValue">
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>cancel</button>
+  <button class="confirm" (click)="save()" mat-button [mat-dialog-close]="true">Add {{data.fieldName}} Field</button>
+</mat-dialog-actions>

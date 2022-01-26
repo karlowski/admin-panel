@@ -1,0 +1,13 @@
+<app-header></app-header>
+<mat-drawer-container >
+  <mat-drawer #drawer class="modal" mode="side" position="end">
+    <app-search-sidenav  [drawer]="drawer"></app-search-sidenav>
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content">
+    <app-nav></app-nav>
+    <app-main></app-main>
+    <app-search-button *ngIf="showSearchButton" class="search-button" (clickButton)="drawer.open()"></app-search-button>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-progress-spinner>
+</app-progress-spinner>

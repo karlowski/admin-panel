@@ -1,0 +1,14 @@
+<div class="mat-dialog-header">
+  <div class="header-title">Top-up</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-content>
+    <mat-form-field appearance="outline" class="topUp" >
+      <mat-label>top-up amount</mat-label>
+      <input placeholder="ENTER TOP-UP AMOUNT" matInput [formControl]="fieldTopUpAmount">
+    </mat-form-field>
+</div>
+<mat-dialog-actions mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>cancel</button>
+  <button class="confirm" mat-button (click)="onTopUp()">top-up</button>
+</mat-dialog-actions>

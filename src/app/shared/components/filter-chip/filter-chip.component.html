@@ -1,0 +1,18 @@
+<div class="" [ngClass]="{'stat-block__section': true, 'nonLastBlock' : !isLast }">
+  <div class="stat-block__title">
+    {{statBlockName}}
+  </div>
+
+  <ul class="stat-block__list">
+    <li class="stat-block__item" *ngFor="let stat of stats" (click)="onStatCheck.emit(stat)">
+      <div class="stat-block__name">
+        {{stat.name}}
+      </div>
+      <div class="stat-block__value">
+        <div class="stat-block__number" [ngClass]="{'active': stat.active}">
+          {{stat.value}}
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

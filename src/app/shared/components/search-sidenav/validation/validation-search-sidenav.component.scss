@@ -1,0 +1,100 @@
+@import "variables";
+
+.search-sidenav{
+
+  &__header {
+    width: 100%;
+    height: 60px;
+    background-color: $dark-silver;
+    font-size: 2rem;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-left: 20px;
+    font-weight: 500;
+  }
+
+  &__close {
+    border: $white 2px solid;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    font-size: 2rem;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  &__form {
+    margin-top: 40px;
+  }
+
+  &__option {
+    font-size: 1.5rem;
+    margin: 15px;
+
+    mat-label {
+      text-transform: uppercase;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__radio-group {
+    display: flex;
+    flex-wrap: wrap;
+
+    mat-label {
+      width: 100%;
+    }
+    mat-radio-button {
+      width: 50%;
+      margin-top: 10px;
+    }
+  }
+
+  &__option-name {
+    font-size: 2rem;
+    color: $surf;
+    margin-bottom: 20px;
+  }
+
+  &__form-field {
+    width: 100%;
+    text-transform: uppercase;
+  }
+
+  &__button-group {
+    border-top: 1px solid $white-smoke-dark;
+    background-color: $white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__refresh {
+    border: $gray-trolley-dark 2px solid;
+    color: $gray-trolley-dark;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    font-size: 2rem;
+    margin-right: 10px;
+    padding: 10px 0 0 10px;
+    cursor: pointer;
+  }
+
+  &__submit {
+    border-radius: 50px;
+    height: 50px;
+    width: 120px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}

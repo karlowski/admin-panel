@@ -1,0 +1,124 @@
+<section class="validations-child-table-container">
+  <div class="table-header">
+    <div class="table-header__filter-container">
+      <div class="table-header__wrapper">
+        <div class="table-header__title">{{toCapitalizedWords()}}</div>
+        <app-add-button (clickButton) = "openUploadDialog(null, true)" class="small"></app-add-button>
+      </div>
+    </div>
+  </div>
+  <div class="custom-table" *ngIf="tableData">
+    <table mat-table [dataSource]="tableData">
+
+      <ng-container matColumnDef="flag">
+        <th mat-header-cell *matHeaderCellDef class="flag-column">
+          <div class="title">Flag</div>
+        </th>
+        <td mat-cell *matCellDef="let element" [class.flag-cells]="!element.flag && !element.modified">
+          <mat-icon class="material-icons"
+            [class.icon_green] = "element.modified"
+            [class.icon_red]="element.flag && !element.modified"
+            >flag</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="flagType">
+        <th mat-header-cell *matHeaderCellDef class="flagType-column">
+          <div class="title">Flag Type</div>
+        </th>
+        <td mat-cell *matCellDef="let element" [class.flag-cells]="!element.flag && !element.modified">
+          <div class="title">{{element.flag? element.flag.type : '---' }}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="name-column">
+          <div class="title">Name</div>
+        </th>
+        <td mat-cell *matCellDef="let element" class="name-column" [class.flag-cells]="!element.flag && !element.modified">
+          <div class="title">
+            <a *ngIf="!(element.url && isMapped) && !(element.value && !isMapped)" href="/api/v1/document/{{element.url}}">
+              {{element.name}}
+            </a>
+              {{(element.url && isMapped) || (element.value && !isMapped) ? element.name : ''}}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documentType">
+        <th mat-header-cell *matHeaderCellDef class="docType-column">
+          <div class="title" >Document Type</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title docType-column">{{element.type}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="processed" *ngIf="isMapped" class="document-column">
+        <th mat-header-cell *matHeaderCellDef class="processed-column">
+          <div class="title">Processed</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="field_value" >{{element.isProcessed ? 'True' : 'False' }}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mlScore" *ngIf="isMapped">
+        <th mat-header-cell *matHeaderCellDef class="ml-score-column">
+          <div class="title">ML Score</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="field_value" >{{element.mlScore }}</div>
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="mlPrecision" *ngIf="isMapped">
+        <th mat-header-cell *matHeaderCellDef class="ml-precision-column">
+          <div class="title">ML Precision</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="field_value" >{{element.mlPrecision}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="effectiveAt">
+        <th mat-header-cell *matHeaderCellDef class="ml-effectiveAt-column">
+          <div class="title">Date</div>
+        </th>
+        <td mat-cell *matCellDef="let element" class="ml-effectiveAt-column">
+          <div class="field_value" >{{element.effectiveAt}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="document">
+        <th mat-header-cell *matHeaderCellDef class="document-column">
+          <div class="title">Document</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+
+          <div *ngIf="!(element.url && isMapped) && !(element.value && !isMapped)" class="document_value" >
+            <button mat-button (click)="openUploadDialog(element, true)">Upload
+              <mat-icon class="material-icons" >file_upload</mat-icon>
+            </button>
+          </div>
+          <div *ngIf="(element.url && isMapped) || (element.value && !isMapped)" class="document_value" >
+            <button mat-button (click)="openUploadDialog(element, false)">Replace Document
+              <mat-icon class="material-icons" >add_circle_outline</mat-icon>
+            </button>
+            <a mat-button href="/api/v1/document/{{element.url || element.value}}" [download]="element.name">
+              Download
+              <mat-icon class="material-icons" >file_download</mat-icon>
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsHeaders" class="validation-headers"></tr>
+      <tr mat-row
+        *matRowDef="let row; columns: columnsHeaders;"
+        [class.modified-row] = "row.modified"
+        [class.row_red]="row.flag" ></tr>
+    </table>
+  </div>
+</section>

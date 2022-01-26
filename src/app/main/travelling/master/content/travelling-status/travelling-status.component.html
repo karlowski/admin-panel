@@ -1,0 +1,5 @@
+<ng-container [ngSwitch]="status">
+  <mat-icon class="resume" matTooltip="No Problems" matTooltipPosition="above" *ngSwitchCase="'NO_PROBLEMS'">check_circle_outline</mat-icon>
+  <mat-icon class="canceled" matTooltip="Ran out" matTooltipPosition="above" *ngSwitchCase="'RAN_OUT'">close</mat-icon>
+  <mat-icon class="warning" matTooltip="Critically low" matTooltipPosition="above" *ngSwitchCase="'CRITICALLY_LOW'">warning</mat-icon>
+</ng-container>

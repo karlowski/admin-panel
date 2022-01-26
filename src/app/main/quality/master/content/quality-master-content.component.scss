@@ -1,0 +1,26 @@
+@import "variables";
+
+.wrapper {
+  margin: 0 10px;
+}
+
+.quality-table-container {
+  max-width: 1420px;
+  margin: 15px auto 0 auto;
+  border-radius: 15px;
+}
+
+tr.quality-row:hover{
+  cursor: pointer;
+  background: $pale-turquoise-light;
+}
+
+.mat-cell, .mat-header-cell {
+  padding: 5px;
+
+  @media (max-width: 800px) {
+    &:first-of-type {
+      padding-left: 11px;
+    }
+  }
+}

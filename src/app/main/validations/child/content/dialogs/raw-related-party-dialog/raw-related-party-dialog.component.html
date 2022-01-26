@@ -1,0 +1,26 @@
+<div class="mat-dialog-header">
+  <div class="header-title">{{newParty ? 'Add New' : 'Modify'}} Related Party</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <h4 class="name">Attributes</h4>
+
+  <form [formGroup]="form" class="vrp-form">
+    <div class="related_party_field" *ngFor="let field of fields; let i = index">
+      <mat-form-field appearance="outline" class="half-size">
+        <mat-label>Name</mat-label>
+        <input matInput [formControlName]="namePrefix + i">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-size">
+        <mat-label>Value</mat-label>
+        <input matInput [formControlName]="valuePrefix + i">
+      </mat-form-field>
+      <app-delete-button class="delete-button" (clickButton) = "deleteAttribute(i)" class="small">Add Attribute</app-delete-button>      
+    </div>
+    <app-add-button class="add-button" (clickButton) = "addAttribute()" class="small"></app-add-button>      
+  </form>
+</div>
+<mat-dialog-actions mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>Cancel</button>
+  <button class="confirm" (click)="save()" mat-button [mat-dialog-close]="true">Save Related Party</button>
+</mat-dialog-actions>

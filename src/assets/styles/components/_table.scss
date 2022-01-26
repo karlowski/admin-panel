@@ -1,0 +1,191 @@
+@import "variables";
+
+@mixin mat-table-theme($theme-or-color-config) {
+  .custom-table {
+    max-width: 1420px;
+    box-shadow: 0 0 8px 0 $gray-shadow;
+    border-radius: 15px;
+    background-color: $white;
+
+    .mat-table {
+      font-size: 1.2rem;
+      color: $gray-granite-dark;
+      max-height: 550px;
+      width: 100%;
+    }
+
+    .mat-table tr.mat-header-row {
+      height: 50px;
+    }
+
+    .mat-table tr.mat-row {
+      height: 50px;
+    }
+
+    .mat-table .title {
+      font-weight: 600;
+    }
+
+    .mat-table .sub-title {
+      font-weight: 300;
+    }
+
+    .mat-table .button-group-container {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 10px;
+
+      mat-icon {
+        margin-right: 15px;
+        cursor: pointer;
+      }
+    }
+
+    th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+      border-bottom-color: $white-smoke-dark;
+    }
+
+    .workflow-column {
+      width: 400px;
+    }
+
+    .dummy-column {
+      width: 200px;
+    }
+
+    .state-column {
+      width: 90px;
+    }
+
+    .child-workflows,
+    .created-by-column,
+    .created-at-column,
+    .last-updated-column,
+    .travelling-child-date-created-column {
+      width: 140px;
+    }
+
+    .status-column {
+      width: 60px;
+    }
+
+    .button-group-column {
+      width: 300px;
+    }
+
+    .date-time-column {
+      width: 90px;
+    }
+
+    .credit-card-account-column {
+      width: 90px;
+    }
+
+    .currency-column,
+    .amount-column {
+      width: 50px;
+    }
+
+    .quality-column {
+      width: 142px;
+    }
+
+    .created-at-column {
+      width: 155px;
+    }
+
+    .quality-workflow-column {
+      width: 1060px;
+    }
+
+    .basic-column {
+      width: 90px;
+    }
+
+    .extended-column {
+      width: 120px;
+    }
+
+    .travelling-dummy-column,
+    .travelling-card-account-column {
+      width: 250px;
+    }
+
+    .travelling-currency-column {
+      width: 80px;
+    }
+
+    .travelling-payment-status-column {
+      width: 150px;
+    }
+
+    .travelling-column,
+    .travelling-child-amount-column,
+    .travelling-child-currency-column,
+    .travelling-child-type-column {
+      width: 100px;
+    }
+
+    .travelling-balance-column {
+      width: 90px;
+    }
+
+    .travelling-child-name-column {
+      width: 280px;
+    }
+
+    .travelling-child-name-alerts-column {
+      width: 130px;
+    }
+
+    .travelling-limit-amount,
+    .travelling-current {
+      width: 150px;
+    }
+
+    .travelling-last-charged-column,
+    .travelling-alert,
+    .travelling-payment-source-column,
+    .travelling-child-date-time-column {
+      width: 140px;
+    }
+
+    .travelling-child-card-account-column {
+      width: 160px;
+    }
+
+    .travelling-child-workflow-column,
+    .travelling-child-chat-column {
+      width: 400px;
+    }
+
+    .travelling-buttons-group {
+      width: 650px;
+    }
+
+    .travelling-buttons-group-alerts {
+      width: 250px;
+    }
+
+    .travelling-recipient {
+      width: 180px;
+    }
+
+    .travelling-status {
+      width: 60px;
+    }
+
+
+    tr.table-bottom-radius:last-child td:first-child {
+      border-bottom-left-radius: 15px;
+    }
+
+    tr.table-bottom-radius:last-child td:last-child {
+      border-bottom-right-radius: 15px;
+    }
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+}

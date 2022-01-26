@@ -1,0 +1,89 @@
+<section class="validations-child-table-container">
+  <div class="table-header">
+    <div class="table-header__filter-container">
+      <div class="table-header__wrapper">
+        <div class="table-header__title">{{toCapitalizedWords()}}</div>
+        <app-add-button (clickButton) = "createField()" class="small"></app-add-button>
+      </div>
+    </div>
+  </div>
+  <div class="custom-table" *ngIf="tableData">
+    <table mat-table [dataSource]="tableData">
+      <ng-container matColumnDef="flag">
+        <th mat-header-cell *matHeaderCellDef class="flag-column">
+          <div class="title">Flag</div>
+        </th>
+        <td mat-cell *matCellDef="let element" [class.flag-cells]="!element.flag && !element.modified">
+          <mat-icon class="material-icons"
+            [class.icon_green] = "element.modified"
+            [class.icon_red]="element.flag && !element.modified"
+            >flag</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="flagType">
+        <th mat-header-cell *matHeaderCellDef class="flagType-column">
+          <div class="title">Flag Type</div>
+        </th>
+        <td mat-cell *matCellDef="let element" [class.flag-cells]="!element.flag && !element.modified">
+          <div class="title">{{element.flag? element.flag.type : '---' }}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="name-column">
+          <div class="title">Name</div>
+        </th>
+        <td mat-cell *matCellDef="let element" [class.flag-cells]="!element.flag && !element.modified">
+          <div class="title">{{element.name}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="source">
+        <th mat-header-cell *matHeaderCellDef class="source-column">
+          <div class="title">Source</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title fieldTypeTitle" *ngIf="element._dataSourceId">{{element._dataSourceId}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fieldType">
+        <th mat-header-cell *matHeaderCellDef class="fieldType-column">
+          <div class="title" >Field Type</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.type}}</div>
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef class="value-column">
+          <div class="title">Value</div>
+        </th>
+        <td mat-cell *matCellDef="let element;let i = index">
+          <div class="field_value" >{{element.value ? element.value : '---' }}</div>
+          <mat-icon
+            *ngIf="element.value"
+            class="material-icons edit-icon"
+            (click)="editValue(i)">
+            edit
+          </mat-icon>
+          <mat-icon
+            *ngIf="!element.value"
+            class="material-icons edit-icon"
+            (click)="editValue(i)">
+            add_circle_outline
+          </mat-icon>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsHeaders" class="validation-headers"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsHeaders;"
+        [class.row_red]="row.flag"
+        [class.modified-row] = "row.modified"></tr>
+    </table>
+  </div>
+</section>

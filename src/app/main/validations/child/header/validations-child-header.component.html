@@ -1,0 +1,70 @@
+<div class="validations-child-header">
+  <div routerLink="/validation" class="validations-child-header__back-button-container">
+    <mat-icon class="validations-child-header__back-button">keyboard_backspace</mat-icon>
+  </div>
+  <div class="validations-child-header__main">
+    <div class="validations-child-header__title-container">
+      <div class="validations-child-header__work-icon-container">
+        <mat-icon class="validations-child-header__work-icon">work_outline</mat-icon>
+      </div>
+      <div class="validations-child-header__main-inner" *ngIf="validation">
+        <div class="header">
+          <div class="header__wrapper">
+            <div class="header__title">{{validation.raw.name}}</div>
+            <div class="header__id"><span class="bold">ID </span> {{validation._iBrumaId}}</div>
+          </div>
+          <div class="validations-child-header__container">
+            <div class="validations-child-header__container-status">
+              <div *ngIf="validation.workflowStep">
+                <app-workflows-state  [state]="validation.workflowStep"></app-workflows-state>
+              </div>
+              <div>
+                <div class="validations-child-header__container-title">Workflow State</div>
+                <div class="validations-child-header__container-description" [ngClass] = "validation.workflowStep == 'COMPLETE' ? 'bud': 'surf'">{{validation.workflowStep}}</div>
+              </div>
+            </div>
+            <div class="validations-child-header__container-status">
+              <div *ngIf="validation.workflowStatus">
+                <app-workflows-status [status]="validation.workflowStatus"></app-workflows-status>
+              </div>
+              <div>
+                <div class="validations-child-header__container-title">Workflow Status</div>
+                <div class="validations-child-header__container-description" [ngClass] = "validation.workflowStatus == 'COMPLETED' ? 'bud': 'surf'">{{validation.workflowStatus}}</div>
+              </div>
+            </div>
+            <div class="validations-child-header__container-menu-button">
+              <app-action-buttons
+              [status] = "validation.workflowStatus"
+              (markAsValidated) = "markAsValidated()"
+              (restartWorkflow) = "restartWorkflow()"
+            ></app-action-buttons>
+
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="bottom__title">flagged fields</div>
+            <div class="bottom__description">{{getFlagCount()}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">date created</div>
+            <div class="bottom__description">{{validation.createdAt | date:'dd/MM/yyyy hh:mm'}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">last updated</div>
+            <div class="bottom__description">{{validation.updatedAt | date:'dd/MM/yyyy hh:mm'}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">dummy</div>
+            <div class="bottom__description">{{getDummyName(validation.raw?.dummyCode)}}</div>
+            <div class="bottom__title">{{validation.raw?.dummyCode}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="validations-child-footer">
+
+</div>

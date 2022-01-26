@@ -1,0 +1,83 @@
+@import "variables";
+
+.validations-child-table-container {
+  background-color: white;
+  max-width: 1420px;
+  margin: 0 auto;
+
+  .table-header {
+    &__wrapper {
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid $surf-pale;
+    }
+
+    &__title {
+      color: $gray-trolley-dark;
+      line-height: 26.4px;
+      font-weight: 500;
+      font-size: 2.2rem;
+      height: 40px;
+    }
+  }
+
+  .validation-headers {
+    background-color: $white-smoke-light
+  }
+
+  .custom-table {
+    box-shadow: none;
+
+    .name-column {
+      width: 25%;
+    }
+
+    .date-column {
+      width: 10%;
+    }
+
+    .type-column {
+      width: 25%;
+    }
+
+    .currency-column {
+      width: 5%;
+    }
+
+    .price-column {
+      width: 10%;
+    }
+
+    .document-column {
+      width: 25%;
+    }
+
+    .pending {
+      color: $gray-lavender-dark;
+      text-transform: uppercase;
+      padding: 0 16px;
+
+      mat-icon {
+        margin-left: 6px;
+      }
+    }
+
+    .last-column {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.mat-cell, .mat-header-cell {
+  padding: 5px;
+
+  @media (max-width: 800px) {
+    &:first-of-type {
+      padding-left: 11px;
+    }
+  }
+}

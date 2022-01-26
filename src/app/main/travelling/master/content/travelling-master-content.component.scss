@@ -1,0 +1,61 @@
+@import "variables";
+
+.travelling-table-container {
+  max-width: 1520px;
+  margin: 15px auto 0 auto;
+  border-radius: 15px;
+  position: relative;
+
+  &__chips {
+    margin-bottom: 10px;
+    margin-left: 50px;
+  }
+}
+
+.arrows-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+
+  @media (max-width: 800px) {
+    margin: 0;
+  }
+
+
+  &.long {
+    align-items: flex-start;
+
+    app-right-button, app-left-button {
+      margin-top: 35vh;
+    }
+  }
+}
+
+.custom-table {
+  width:100%;
+}
+
+tr.quality-row:hover{
+  cursor: pointer;
+  background: $pale-turquoise-light;
+}
+
+.travelling-bottom{
+  position:absolute;
+  bottom:0;
+  width: 100%;
+}
+
+.add-button-payment-source{
+  margin:30px;
+  float: right;
+}
+.mat-cell, .mat-header-cell {
+  padding: 5px;
+
+  @media (max-width: 800px) {
+    &:first-of-type {
+      padding-left: 11px;
+    }
+  }
+}

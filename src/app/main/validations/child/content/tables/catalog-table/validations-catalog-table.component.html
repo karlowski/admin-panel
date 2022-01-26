@@ -1,0 +1,88 @@
+<section class="validations-child-table-container">
+  <div class="table-header">
+    <div class="table-header__filter-container">
+      <div class="table-header__wrapper">
+        <div class="table-header__title">Catalog</div>
+      </div>
+    </div>
+  </div>
+  <div class="custom-table" *ngIf="tableData">
+    <table mat-table [dataSource]="tableData">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="name-column">
+          <div class="title">Document name</div>
+          <div class="sub-title">Document description</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.name}}</div>
+          <div class="sub-title">{{element.description}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef class="date-column">
+          <div class="title">Document date</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.extractedAt | date: 'dd/MM/yyyy'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef class="ntype-column">
+          <div class="title">Document type</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.type}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef class="currency-column">
+          <div class="title">Currency</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="sub-title">{{element.currency}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef class="price-column">
+          <div class="title">Price</div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="title">{{element.price | number : '.2'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="document">
+        <th mat-header-cell *matHeaderCellDef class="document-column"></th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <div *ngIf="isDocumentLoading[i]; else loaded" class="sub-title pending last-column">
+            Pending
+            <mat-icon class="material-icons" >query_builder</mat-icon>
+          </div>
+
+          <ng-template #loaded>
+            <div *ngIf="!documentsUrls[element.documentId]" class="title last-column">
+              <button mat-button (click)="purchaseDocument(element, i)">
+                Purchase Document
+                <mat-icon class="material-icons" >file_download</mat-icon>
+              </button>
+            </div>
+
+            <div *ngIf="documentsUrls[element.documentId]" class="title last-column">
+              <a mat-button [href]="documentsUrls[element.documentId]">
+                Download
+                <mat-icon class="material-icons" >file_download</mat-icon>
+              </a>
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsHeaders" class="validation-headers"></tr>
+      <tr mat-row *matRowDef="let rowData; columns: columnsHeaders"></tr>
+    </table>
+  </div>
+</section>

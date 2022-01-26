@@ -1,0 +1,107 @@
+@import "variables";
+
+.quality-child-header {
+  width: 1380px;
+  margin: 30px auto 0 auto;
+  padding: 30px 20px 30px 20px;
+  height: 143px;
+  background-color: $white;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  align-items: flex-start;
+
+  &__main-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 125px;
+  }
+
+  &__back-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border: 3px solid $gray-lavender-light;
+    border-radius: 100%;
+    color: $gray-lavender-light;
+    cursor: pointer;
+  }
+
+  &__back-button-container:focus {
+    outline: none;
+  }
+
+  &__country-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $gray-lavender-dark;
+    color: white;
+    border-radius: 100%;
+    padding: 8px;
+  }
+
+  &__title-container {
+    min-width: 1268px;
+    min-height: 133px;
+    display: flex;
+    align-items: flex-start;
+    border-left: 1px solid #727680;
+    padding: 0 0 10px 28px;
+    margin: 0 20px;
+  }
+
+  .header {
+    min-width: 1248px;
+    display: flex;
+    justify-content: space-between;
+
+    &__wrapper {
+      flex-direction: column;
+      margin-left: 20px;
+    }
+
+    &__title {
+      color: #00ADC8;
+      font-size: 2.2rem;
+      line-height: 120%;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    &__id {
+      font-size: 1.3rem;
+      line-height: 17px;
+      color: $gray-granite-dark;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+  
+  .bottom {
+    max-width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 20px;
+
+    &__title {
+      text-transform: uppercase;
+      color: $gray-trolley-dark;
+      font-size: 1.2rem;
+      line-height: 130%;
+      font-weight: 400;
+    }
+
+    &__description {
+      text-transform: uppercase;
+      color: $bud;
+      font-size: 1.2rem;
+      line-height: 150%;
+    }
+  }
+}

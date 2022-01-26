@@ -1,0 +1,146 @@
+@import "variables";
+
+.validations-child-table-container {
+  background-color: white;
+  max-width: 1420px;
+  margin: 0 auto;
+
+  .table-header {
+    &__wrapper {
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid $surf-pale;
+    }
+
+    &__title {
+      color: $gray-trolley-dark;
+      line-height: 26.4px;
+      font-weight: 500;
+      font-size: 2.2rem;
+      margin-top: -12px;
+    }
+
+    &__filter-group {
+      width: 800px;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+
+      @media (max-width: 1080px) {
+        margin-top: 10px;
+      }
+
+      @media (max-width: 860px) {
+        display: block;
+        width: 710px
+      }
+
+      mat-label {
+        font-size: 1.4rem;
+        font-weight: 300;
+        line-height: 16.8px;
+        text-transform: uppercase;
+      }
+
+      mat-select {
+        font-size: 1.5rem;
+        line-height: 16.8px;
+        color: $dark-silver;
+      }
+    }
+
+    &__state {
+      width: 160px;
+    }
+
+    &__status {
+      width: 160px;
+    }
+
+    &__date {
+      font-size: 1.15rem;
+      width: 200px;
+
+      input {
+        text-transform: uppercase;
+      }
+    }
+
+    &__customer {
+      width: 250px;
+    }
+  }
+
+  .custom-table {
+    box-shadow: none;
+  }
+
+  .icon_red{
+    color: $carmine
+  }
+
+  .icon_green{
+    color: $bud
+  }
+
+  .validation-headers, .flag-cells{
+    background-color: $white-smoke-light
+  }
+
+  .row_red{
+    background-color: $carmine-light2
+  }
+
+  .modified-row{
+    background-color: $green-eggshell
+  }
+
+  .flag-column{
+    width:5%;
+  }
+
+  .flagType-column{
+    width:15%;
+  }
+  .name-column{
+    padding-left: 10px;
+  }
+  .docType-column{
+    padding-left: 10px;
+  }
+  .value-column{
+    width:30%;
+  }
+
+  .ml-effectiveAt-column {
+    white-space: nowrap;
+    padding-left: 10px;
+  }
+
+  .field_value{
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+  }
+
+  .edit-icon{
+    cursor: pointer;
+  }
+
+  .hidden_link{
+    display:none;
+  }
+}
+
+.mat-cell, .mat-header-cell {
+  padding: 5px;
+
+  @media (max-width: 800px) {
+    &:first-of-type {
+      padding-left: 11px;
+    }
+  }
+}

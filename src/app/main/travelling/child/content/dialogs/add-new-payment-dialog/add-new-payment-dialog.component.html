@@ -1,0 +1,77 @@
+<div class="mat-dialog-header">
+  <div class="header-title">Add new payment source</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>payment source name</mat-label>
+      <input placeholder="ENTER NAME" matInput formControlName="name">
+    </mat-form-field>
+
+
+    <div class="double-fields">
+      <mat-form-field appearance="outline" class="dummy half-size">
+        <mat-label>dummy</mat-label>
+        <mat-select placeholder="select dummy" formControlName="dummy">
+          <mat-option *ngFor="let dummy of getDummys()" [value]="dummy">{{getDummyName(dummy)}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="payment-type half-size">
+        <mat-label>payment method</mat-label>
+        <mat-select placeholder="select payment method" formControlName="paymentType">
+          <mat-option *ngFor="let paymentType of getPaymentTypes()" [value]="paymentType">{{getPaymentTypeName(paymentType)}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <hr class="horizontal-line">
+
+    <mat-form-field appearance="outline" *ngIf="isCard()">
+      <mat-label>card holder name</mat-label>
+      <input placeholder="ENTER CARD HOLDER NAME" matInput formControlName="owner">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="isCard()">
+      <mat-label>card number</mat-label>
+      <input placeholder="XXXX XXXX XXXX XXXX" matInput formControlName="cardNo">
+    </mat-form-field>
+
+    <div class="double-fields" *ngIf="isCard()">
+      <mat-form-field appearance="outline" class="half-size">
+        <mat-label>Expiration Month/Year</mat-label>
+        <input matInput [matDatepicker]="dp" [value] = "expirationDate" [min]="today">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp
+                        startView="multi-year"
+                        (monthSelected)="chosenMonthHandler($event, dp)"
+                        panelClass="example-month-picker">
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-size">
+        <mat-label>cvc</mat-label>
+        <input placeholder="###" type="password" maxlength="3" matInput formControlName="cvc">
+      </mat-form-field>
+    </div>
+
+    <div class="double-fields">
+        <mat-form-field appearance="outline" class="half-size">
+          <mat-label>credit limit</mat-label>
+          <input placeholder="ENTER CREDIT LIMIT" matInput formControlName="creditLimit">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-size">
+          <mat-label>currency</mat-label>
+          <mat-select placeholder="select currency" formControlName="currency">
+            <mat-option *ngFor="let currency of getCurrencies()" [value]="currency">{{getCurrencyName(currency)}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+</form>
+</div>
+<mat-dialog-actions mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>cancel</button>
+  <button class="confirm" mat-button (click)="onSubmit()">Add</button>
+</mat-dialog-actions>

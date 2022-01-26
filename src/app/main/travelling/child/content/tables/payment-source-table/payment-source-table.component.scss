@@ -1,0 +1,135 @@
+@import "variables";
+
+//
+//.table-header__tab-container {
+//  height: 30px;
+//  width: 1420px;
+//  margin: 0 auto;
+//  //background-color: $dark-silver;
+//}
+.travelling-child-table-container {
+  background-color: white;
+  max-width: 1420px;
+  margin: 0 auto;
+  border-radius: 0 0 15px 15px;
+
+  .table-header {
+    &__wrapper {
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid $surf-pale;
+    }
+
+    &__title {
+      color: $gray-trolley-dark;
+      line-height: 26.4px;
+      font-weight: 500;
+      font-size: 2.2rem;
+      margin-top: -12px;
+    }
+
+    &__filter-form {
+      width: 460px;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+
+      mat-label {
+        font-size: 1.4rem;
+        font-weight: 300;
+        line-height: 16.8px;
+        text-transform: uppercase;
+      }
+
+      mat-select {
+        font-size: 1.5rem;
+        line-height: 16.8px;
+        color: $dark-silver;
+      }
+    }
+
+    &__state {
+      width: 160px;
+    }
+
+    &__status {
+      width: 160px;
+    }
+
+    &__date {
+      font-size: 1.132rem;
+      width: 200px;
+
+      input {
+        text-transform: uppercase;
+      }
+    }
+
+    &__customer {
+      width: 250px;
+    }
+  }
+
+  .custom-table {
+    box-shadow: none;
+  }
+
+  .confirm {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    height: 50px;
+    background-color: $surf;
+    text-transform: uppercase;
+    border-radius: 50px;
+    color: $white;
+  }
+}
+
+.rawBadge .mat-badge-active, .mappedBadge .mat-badge-active{
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+::ng-deep .section-tabs .mat-tab-header{
+  padding-top: 25px !important;
+  background: $dark-silver;
+
+  .mat-tab-label-container {
+    overflow: visible !important;
+  }
+
+  .mat-ripple {
+    overflow: visible !important;
+  }
+}
+
+.button-group {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  margin-left: 80px;
+
+  @media (max-width: 1000px) {
+    margin-left: auto;
+  }
+
+  .top-up-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.mat-cell, .mat-header-cell {
+  padding: 5px;
+
+  @media (max-width: 800px) {
+    &:first-of-type {
+      padding-left: 11px;
+    }
+  }
+}

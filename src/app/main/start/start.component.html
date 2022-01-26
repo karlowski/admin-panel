@@ -1,0 +1,39 @@
+<form class="start-component__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field class="start-component__autocomplete"  >
+    <mat-label>Registered Name</mat-label>
+    <input type="text"
+           placeholder="Registered Name"
+           matInput
+           formControlName="name"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        (onSelectionChange)="setCompany(extraction)"
+        *ngFor="let extraction of extractions$ | async"
+        [value]="extraction.name">
+        <mat-icon [svgIcon]="extraction.dummyCode"></mat-icon>
+        <span class="extraction-iso">{{getCountryCode(extraction.dummyCode)}}</span>
+        <span class="extraction-name">{{extraction.name}}</span>
+        <span class="extraction-id">{{extraction.leExternalId}}</span>
+      </mat-option>
+      <mat-option *ngIf="(extractions$ | async) && !(extractions$ | async).length">
+        <span>No results.</span>
+      </mat-option>
+    </mat-autocomplete>
+    <mat-spinner *ngIf="loading$ | async" matSuffix class="start-spinner" diameter="30"></mat-spinner>
+  </mat-form-field>
+
+  <div class="start-component__form-inputs">
+<!--   <mat-form-field>-->
+<!--     <mat-label>Dummy</mat-label>-->
+<!--     <input [disabled]="inputValue" matInput formControlName="dummyCode">-->
+<!--   </mat-form-field>-->
+
+<!--   <mat-form-field>-->
+<!--     <mat-label>External Id</mat-label>-->
+<!--     <input [disabled]="inputValue" matInput formControlName="leExternalId">-->
+<!--   </mat-form-field>-->
+ </div>
+  <button mat-raised-button class="start-workflow-btn" type="submit">Retrieve Fire Works Data</button>
+</form>
+

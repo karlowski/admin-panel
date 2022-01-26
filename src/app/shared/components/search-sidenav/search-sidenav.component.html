@@ -1,0 +1,8 @@
+<container-element [ngSwitch]="currentPage">
+  <app-workflow-search-sidenav *ngSwitchCase="'/workflow'" [drawer]="drawer">
+  </app-workflow-search-sidenav>
+  <app-validation-search-sidenav *ngSwitchCase="'/validation'" [drawer]="drawer">
+  </app-validation-search-sidenav>
+  <app-travelling-search-sidenav *ngSwitchCase="'/travelling'" [drawer]="drawer">
+  </app-travelling-search-sidenav>
+</container-element>

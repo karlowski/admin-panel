@@ -1,0 +1,49 @@
+form {
+  margin-top: 200px;
+}
+.start-component {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    &-inputs {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+    }
+  }
+
+  &__autocomplete {
+    width: 600px;
+  }
+}
+
+span.extraction-iso {
+  display: inline-block;
+  font-size:x-large;
+}
+span.extraction-name {
+  display: inline-block;
+  height: 30px;
+  margin: 5px;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+span.extraction-id {
+  margin:5px;
+  float: right;
+}
+
+.start-workflow-btn {
+  font-size: 19px;
+  line-height: 38px;
+}
+
+.start-spinner {
+  margin-right: 10px;
+  margin-bottom: -5px;
+}

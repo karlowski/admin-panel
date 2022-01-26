@@ -1,0 +1,102 @@
+<div class="mat-dialog-header">
+  <div class="header-title">{{newParty ? 'Add New' : 'Change'}} Related Party</div>
+  <mat-icon mat-dialog-close class="close">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select  placeholder="please select related party type" formControlName="relatedPartyType">
+        <mat-option
+          *ngFor="let rpType of relatedPartyTypes"
+          [value]="rpType.name"
+        >
+          {{rpType.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="isFireWorks()">
+      <mat-label>Registered Name</mat-label>
+      <input matInput formControlName="registeredName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="left-half" *ngIf="!isFireWorks()">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="right-half" *ngIf="!isFireWorks()">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="left-half" *ngIf="!isFireWorks()">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="dateOfBirthPicker" (click)="dateOfBirthPicker.open()" formControlName="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dateOfBirthPicker>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="left-half" *ngIf="isFireWorks()">
+      <mat-label>Incorporation Date</mat-label>
+      <input matInput [matDatepicker]="dateOfBirthPicker" (click)="dateOfBirthPicker.open()" formControlName="incorporationDate">
+      <mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dateOfBirthPicker>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="right-half" *ngIf="!isFireWorks()">
+      <mat-label>Country Of Birth</mat-label>
+      <input matInput formControlName="countryOfBirth">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [class.right-half]="isFireWorks()">
+      <mat-label>Role</mat-label>
+      <input matInput formControlName="role">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="left-half">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="startDatePicker" (click)="startDatePicker.open()" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="right-half">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endDatePicker" (click)="endDatePicker.open()" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>UBO Type</mat-label>
+      <input matInput formControlName="uboType">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Voting Rights</mat-label>
+      <input matInput formControlName="votingRight">
+    </mat-form-field>
+
+    <mat-radio-group class="radio-group" formControlName="controlType">
+      <mat-radio-button *ngFor="let controlType of controlTypes"  [value]="controlType.id">
+        {{controlType.text}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="outline" class="right-half">
+      <mat-label>Ownership Percentage</mat-label>
+      <input matInput formControlName="ownershipPercentage">
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions mat-dialog-actions>
+  <button class="cancel" mat-button mat-dialog-close>cancel</button>
+  <button class="confirm" (click)="save()" mat-button [mat-dialog-close]="true">{{newParty ? 'Add New' : 'Change'}} Related Party</button>
+</mat-dialog-actions>

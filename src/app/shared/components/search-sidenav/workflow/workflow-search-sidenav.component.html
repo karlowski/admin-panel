@@ -1,0 +1,68 @@
+<div class="search-sidenav">
+  <div class="search-sidenav__header">
+    <div class="search-sidenav__title">Search Workflow</div>
+    <mat-icon class="search-sidenav__close" (click)="drawer.close()">close</mat-icon>
+  </div>
+
+  <form class="search-sidenav__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="search-sidenav__option">
+    <div class="search-sidenav__option-name">
+      Workflow state
+    </div>
+    <mat-form-field class="search-sidenav__form-field" appearance="outline">
+      <mat-label>select state</mat-label>
+      <mat-select  placeholder="please select a state" formControlName="state">
+        <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="search-sidenav__option">
+    <div class="search-sidenav__option-name">
+      Workflow status
+    </div>
+    <mat-radio-group class="search-sidenav__radio-group" formControlName="status">
+      <mat-label>select status</mat-label>
+      <mat-radio-button *ngFor="let status of statuses"  [value]="status.id">{{status.name}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="search-sidenav__option">
+    <div class="search-sidenav__option-name">
+      Dummy
+    </div>
+    <mat-form-field class="search-sidenav__form-field" appearance="outline">
+      <mat-label>select dummy</mat-label>
+      <mat-select placeholder="ALL" formControlName="dummy">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let dummy of getDummys()" [value]="dummy">{{getDummyName(dummy)}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="search-sidenav__option">
+    <div class="search-sidenav__option-name">
+      Date
+    </div>
+
+    <mat-form-field appearance="fill" class="search-sidenav__form-field">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="rangePicker" (click)="rangePicker.open()">
+        <input matStartDate placeholder="Earliest Created" formControlName="createdStart">
+        <input matEndDate placeholder="Latest Created" formControlName="createdEnd">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+      <mat-date-range-picker #rangePicker>
+        <mat-date-range-picker-actions>
+          <button mat-button matDateRangePickerCancel>Cancel</button>
+          <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+        </mat-date-range-picker-actions>
+      </mat-date-range-picker>
+    </mat-form-field>
+  </div>
+  <div class="search-sidenav__button-group">
+    <mat-icon class="search-sidenav__refresh" (click)="onRefresh()">autorenew</mat-icon>
+    <button type="submit" mat-flat-button class="search-sidenav__submit" color="primary">search</button>
+  </div>
+  </form>
+</div>

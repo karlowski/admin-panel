@@ -1,0 +1,5 @@
+<nav class="sub-menu is-fixed">
+  <mat-tab-group (click)="onTabGroupClicked()" mat-align-tabs="center" class="nav-tabs" [(selectedIndex)]="selectedTab" (selectedTabChange)="onTabChange($event)">
+    <mat-tab *ngFor="let tab of tabs" (click)="openMainPage(tab)" [label]="tab.text"></mat-tab>
+  </mat-tab-group>
+</nav>

@@ -1,0 +1,22 @@
+@import "variables";
+@import "buttons";
+
+:host.responsive {
+  .right-button {
+    @include responsive-buttons(right);
+  }
+}
+
+.right-button {
+  width: 50px;
+  height: 60px;
+  border-radius: 0 30px 30px 0;
+  background: $white-smoke-dark;
+  color: $gray-granite-dark;
+  box-shadow: none;
+
+  mat-icon {
+    font-size: 4.2rem;
+    margin: -20px 20px 0 0;
+  }
+}

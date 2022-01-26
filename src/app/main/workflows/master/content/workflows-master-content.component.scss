@@ -1,0 +1,45 @@
+@import "variables";
+
+.workflows-table-container{
+  max-width: 1520px;
+  margin: 15px auto 0 auto;
+  border-radius: 15px;
+
+  &__chips {
+    margin-bottom: 10px;
+    margin-left: 50px;
+  }
+}
+
+.arrows-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+
+  @media (max-width: 800px) {
+    margin: 0;
+  }
+
+  &.long {
+    align-items: flex-start;
+
+    app-right-button, app-left-button {
+      margin-top: 35vh;
+    }
+  }
+}
+
+tr.workflow-row:hover{
+  cursor: pointer;
+  background: $pale-turquoise-light;
+}
+
+.mat-cell, .mat-header-cell {
+  padding: 5px;
+
+  @media (max-width: 800px) {
+    &:first-of-type {
+      padding-left: 11px;
+    }
+  }
+}

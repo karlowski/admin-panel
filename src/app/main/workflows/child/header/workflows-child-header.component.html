@@ -1,0 +1,80 @@
+<div class="workflows-child-header">
+  <div>
+    <div routerLink="/workflow" class="workflows-child-header__back-button-container">
+      <mat-icon class="workflows-child-header__back-button">keyboard_backspace</mat-icon>
+    </div>
+  </div>
+  <div class="workflows-child-header__main">
+    <div class="workflows-child-header__title-container">
+      <div class="workflows-child-header__work-icon-container">
+        <mat-icon class="workflows-child-header__work-icon">work_outline</mat-icon>
+      </div>
+      <div class="workflows-child-header__main-inner" *ngIf="workflow">
+        <div class="header">
+          <div class="header__wrapper">
+            <div class="header__title" *ngIf="workflow.workflowName">{{workflow.workflowName}}</div>
+            <div class="header__id" *ngIf="workflow.workflowId"><span class="bold">ID </span> {{workflow.workflowId}}</div>
+          </div>
+          <div class="workflows-child-header__container">
+            <div>
+              <div class="workflows-child-header__container-title">State</div>
+              <div class="workflows-child-header__container-description surf" *ngIf="workflow.state">{{workflow.state.name}}</div>
+            </div>
+            <div class="workflows-child-header__container-status">
+              <div>
+                <app-workflows-status [isRunningPlayIcon]="true" [status]="workflow.status.id"></app-workflows-status>
+              </div>
+              <div>
+                <div class="workflows-child-header__container-title">Status</div>
+                <div
+                  *ngIf="workflow.status"
+                  class="workflows-child-header__container-description"
+                  [ngClass]="getStatusClass()"
+                >
+                  {{workflow.status.name}}
+                </div>
+              </div>
+            </div>
+            <div class="workflows-child-header__container-menu-button">
+              <app-action-buttons
+                [status] = "workflow.status.id"
+                (sendValidation) = "onSendValidation(workflow.workflowName)"
+                (markAsComplete) = "onMarkAsComplete(workflow.workflowName)"
+                (refreshExtractedData) = "onRefreshExtractedData(workflow.workflowName)"
+                (restartWorkflow) = "onRestartWorkflow(workflow.workflowName)"
+              ></app-action-buttons>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <div class="bottom__title">date created</div>
+            <div class="bottom__description" *ngIf="workflow.createdAt">{{workflow.createdAt | date:'dd/MM/yyyy hh:mm'}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">created by</div>
+            <div class="bottom__description" *ngIf="workflow.createdBy">{{workflow.createdBy.userId}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">last update</div>
+            <div class="bottom__description" *ngIf="workflow.lastUpdated">{{workflow.lastUpdated | date:'dd/MM/yyyy hh:mm'}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">updated by</div>
+            <div class="bottom__description" *ngIf="workflow.createdBy">{{workflow.createdBy.userId}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">child</div>
+            <div class="bottom__title">workflow/legal Entities</div>
+            <div class="bottom__description" *ngIf="workflow.childWorkflows">{{workflow.childWorkflows}}</div>
+          </div>
+          <div>
+            <div class="bottom__title">dummy</div>
+            <div class="bottom__description" *ngIf="workflow.dummy">{{workflow.dummy.name}}</div>
+            <div class="bottom__title" *ngIf="workflow.dummy">{{workflow.dummy.code}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

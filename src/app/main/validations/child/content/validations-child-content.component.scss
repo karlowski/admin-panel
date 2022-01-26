@@ -1,0 +1,48 @@
+@import "variables";
+
+
+.table-header__tab-outer-container {
+  height: 80px;
+  max-width: 1420px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.icon_red{
+  color: $carmine
+}
+
+.field_value{
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+}
+
+.edit-icon{
+  cursor: pointer;
+}
+
+.rawBadge .mat-badge-active, .mappedBadge .mat-badge-active{
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.rawBadge > .mat-badge-active{
+  background-color: $gray-lavender-light;
+
+}
+
+::ng-deep .mat-tab-label-active > .mat-tab-label-content > .rawBadge > .mat-badge-active {
+  background-color: $surf;
+}
+
+.mappedBadge > .mat-badge-active{
+  background-color: $carmine-light2;
+}
+
+::ng-deep .mat-tab-label-active > .mat-tab-label-content > .mappedBadge > .mat-badge-active {
+  background-color: $carmine;
+}

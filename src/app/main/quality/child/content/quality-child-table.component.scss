@@ -1,0 +1,82 @@
+@import "variables";
+
+.quality-child-table-container {
+  background-color: white;
+  border-top: 1px solid $surf-pale;
+  width: 1420px;
+  margin: 0 auto;
+  border-radius: 0 0 15px 15px;
+
+  .table-header {
+    &__wrapper {
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $surf-pale;
+    }
+
+    &__title {
+      color: $gray-trolley-dark;
+      line-height: 26.4px;
+      font-weight: 500;
+      font-size: 2.2rem;
+      margin-top: 10px
+    }
+
+    &__filter-form {
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+      margin: 0 30px 0 0;
+
+      mat-label {
+        font-size: 1.4rem;
+        font-weight: 300;
+        line-height: 16.8px;
+        text-transform: uppercase;
+      }
+
+      mat-select {
+        font-size: 1.5rem;
+        line-height: 16.8px;
+        color: $dark-silver;
+      }
+    }
+
+    &__date-range {
+      font-size: 1.5rem;
+      width: 280px;
+      height: 60px;
+    }
+
+    &__date-range-input {
+      display: inline-block;
+      width: 70%;
+    }
+
+    &__clear-form {
+      position: relative;
+      float: right;
+      top: -6px;
+      cursor: pointer;
+      color: $gray-trolley-dark;
+    }
+  }
+
+  .custom-table {
+    box-shadow: none;
+
+    .quality-created-at-column{
+      width:15%;
+    }
+
+    .quality-workflow-column{
+      width:19%;
+    }
+
+    .quality-number-column{
+      width:11%;
+    }
+  }
+}
